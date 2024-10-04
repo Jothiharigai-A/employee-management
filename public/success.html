@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Success</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-top: 20px;
+        }
+
+        .details {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #e7f1ff;
+            border: 1px solid #007BFF;
+            border-radius: 5px;
+            color: #333;
+        }
+
+        .footer {
+            margin-top: 30px;
+            text-align: center;
+            padding: 10px;
+            background-color: #f1f1f1;
+            color: #333;
+        }
+
+        .footer a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Employee Added Successfully!</h1>
+
+        <div class="details" id="employeeDetails">
+            <!-- Employee details will be displayed here -->
+        </div>
+    </div>
+
+    <div class="footer">
+        &copy; 2024 Employee Management. Created by <a href="#">Your Name</a>.
+    </div>
+
+    <script>
+        // Function to get query parameters
+        function getQueryParams() {
+            const params = {};
+            window.location.search.substring(1).split('&').forEach(function (item) {
+                const [key, value] = item.split('=');
+                params[decodeURIComponent(key)] = decodeURIComponent(value);
+            });
+            return params;
+        }
+
+        // Display employee details
+        function displayEmployeeDetails() {
+            const employeeDetails = getQueryParams();
+            const detailsDiv = document.getElementById('employeeDetails');
+            detailsDiv.innerHTML = `
+                <p><strong>Employee ID:</strong> ${employeeDetails.empId}</p>
+                <p><strong>Employee Name:</strong> ${employeeDetails.empName}</p>
+                <p><strong>Department:</strong> ${employeeDetails.empDept}</p>
+                <p><strong>Gender:</strong> ${employeeDetails.empGender}</p>
+                <p><strong>Phone Number:</strong> ${employeeDetails.empPhone}</p>
+            `;
+        }
+
+        // Call the function to display details
+        displayEmployeeDetails();
+    </script>
+
+</body>
+</html>
